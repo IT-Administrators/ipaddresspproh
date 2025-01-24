@@ -32,6 +32,7 @@ class  IPAddress
         std::string ip_address = "127.0.0.1";
 
         [[nodiscard]] bool IsIPv4() const;
+        [[nodiscard]] bool IsIPv6() const;
     
 
     private:
@@ -41,6 +42,7 @@ class  IPAddress
         // IPv4 separator.
         const char ipv4_sep = '.';
         const std::string ipv4_pattern = "(^[0-9]{1,3}\\.)([0-9]{1,3}\\.){2}([0-9]{1,3}$)";
+        const std::string ipv6_pattern = "^([0-9a-fA-F]{1,4}:+){1,7}[0-9a-fA-F]{1,4}$||^::([0-9a-fA-F]{1,4}:+){1,7}[0-9a-fA-F]{1,4}$||^([0-9a-fA-F]{1,4}:+){1,7}[0-9a-fA-F]{1,4}::$||^::([a-fA-F0-9]+){0,1}$||[0-9a-fA-F]{1,4}::";
 };
 
 IPAddress:: IPAddress()
@@ -84,6 +86,15 @@ inline bool IPAddress::IsIPv4() const
         return false;
     }
     return true;
+}
+
+inline bool IPAddress::IsIPv6() const
+{
+    if (MatchPattern(ip_address, ipv6_pattern))
+    {
+        return true;
+    }
+    return false;
 }
 
 // Split the provided string into a vector of substrings using the specified delimiter.
