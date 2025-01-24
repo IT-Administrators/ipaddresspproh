@@ -1,6 +1,6 @@
 # ipaddresspproh
 
-_The ipaddresspproh header is a headerfile, which implements functions to validate ipv4 addresses._
+_The ipaddresspproh header is a headerfile, which implements functions to validate ipv4 and ipv6 addresses._
 
 ## Table of contents
 
@@ -16,7 +16,7 @@ _The ipaddresspproh header is a headerfile, which implements functions to valida
 
 ## Introduction
 
-Current this headerfile only validates ipv4 addresses. In the future there might be also ipv6 validation as well as ipaddress manipulation and calculations.
+Currently this headerfile only validates ipv4/ipv6 addreses. There might be ipaddress manipulation and calculations in the future.
 
 ## Getting started
 
@@ -83,7 +83,7 @@ In this example the headerfile is in the same directory as the main file.
 
 Using the class inside your project works the following way. 
 
-After importing the headerfile([How to import](#how-to-import)) you can use the class in two different ways:
+After importing the headerfile([How to import](#how-to-import)) you can use the class:
 
 1. Using directive
 ```cpp
@@ -118,6 +118,9 @@ int main(){
     cout << ip2.ip_address << endl;
     IPAddress ip3("192.168.0.1");
     cout << ip3.ip_address << endl;
+    // Validate ipv6 address.
+    IPAddress ipv6("::1");
+    cout << ipv6.IsIPv6() << endl;
 }
 ```
 Result:
@@ -129,6 +132,7 @@ Result:
 0
 192.168.0.1
 192.168.0.1
+1
 ```
 
 ## License
